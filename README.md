@@ -5,6 +5,26 @@
 
 # Tại sao nên học Go? – Exploring Code – Medium
 
+Trong vài năm qua,1 ngôn ngữ lập trình mới đang nổi lên: Go hoặc GoLang. Không có gì làm cho developer trở nên điên rồ hơn một ngôn ngữ lập trình mới, đúng không? Vì vậy, tôi bắt đầu học Go trước 4 đến 5 tháng và ở đây tôi sẽ cho bạn biết lý do tại sao bạn cũng nên học ngôn ngữ mới này.
+
+Tôi sẽ không dạy bạn, cách bạn có thể viết “Hello World !!” trong bài viết này. Có rất nhiều bài báo online cho điều đó. Tôi sẽ giải thích giai đoạn hiện tại của phần mềm máy tính và tại sao chúng ta cần ngôn ngữ mới như Go? Bởi vì nếu không có vấn đề gì thì chúng ta không cần giải pháp, đúng không?
+### **Giới hạn về phần cứng:**
+Bộ xử lý Pentium 4 đầu tiên với tốc độ xung nhịp 3.0GHz đã được Intel giới thiệu vào năm 2004. Hiện giờ, Mackbook Pro 2016 của tôi có tốc độ xung nhịp 2,9GHz. Vì vậy, gần một thập kỷ, không có quá nhiều lợi ích trong việc tăng sức mạnh xử lý . Bạn có thể thấy so sánh việc tăng sức mạnh xử lý với thời gian biểu đồ bên dưới
+
+Từ biểu đồ trên, bạn có thể thấy rằng hiệu suất của một luồng đơn và tần số của bộ xử lý vẫn ổn định trong gần một thập kỷ. Nếu bạn đang nghĩ rằng việc thêm nhiều transistor là giải pháp, thì bạn đã sai. Điều này là do ở quy mô nhỏ hơn, một số tính chất lượng tử bắt đầu nổi lên (như đường hầm) và vì nó thực sự tốn nhiều tiền hơn để đặt nhiều transistor hơn (tại sao?) Và số transistor bạn có thể thêm vào mỗi đô la bắt đầu giảm.
+
+Vì vậy, để giải quyết vấn đề trên,
+  - Các nhà sản xuất bắt đầu bổ sung thêm nhiều nhân hơn cho bộ vi xử lý. Ngày nay chúng tôi có sẵn các CPU 4 nhân và 8 nhân 
+  - Chúng tôi cũng giới thiệu về siêu luồng.
+  - Đã thêm bộ nhớ cache vào bộ xử lý để tăng hiệu suất
+  
+  Nhưng các giải pháp trên cũng có những hạn chế riêng. Chúng tôi không thể thêm nhiều bộ nhớ đệm và nhiều hơn nữa để bộ xử lý tăng hiệu suất như bộ nhớ đệm có giới hạn vật lý: bộ nhớ cache càng lớn, nó càng chậm. Thêm nhiều nhân hơn cho bộ vi xử lý cũng có chi phí của nó. Ngoài ra, điều đó không thể mở rộng đến vô thời hạn. Các bộ vi xử lý đa nhân này có thể chạy đồng thời nhiều luồng và mang lại sự đồng thời về hình ảnh. Chúng ta sẽ thảo luận sau.
+  
+Vì vậy, nếu chúng ta không thể dựa vào những cải tiến phần cứng, cách duy nhất để đi là phần mềm hiệu quả hơn để tăng hiệu suất. Nhưng thật đáng buồn, ngôn ngữ lập trình hiện đại không hiệu quả lắm.
+
+  > “Bộ vi xử lý hiện đại giống như những chiếc xe hơi vui nhộn chạy bằng nitro, chúng vượt trội trong một phần tư dặm. Thật không may là các ngôn ngữ lập trình hiện đại giống như Monte Carlo, chúng có đầy đủ các vòng xoắn và quay. ”- David Ungar
+
+
 ### **Go có goroutines !!**
 
 Như chúng ta đã bàn ở trên, những nhà chế tạo phần cứng  ngày càng thêm nhiều core vào bộ xử lý để cải thiện hiệu năng. Tất cả các trung tâm dữ liệu đều chạy trên những con xử lý này và chúng ta nên tăng số lượng core trong vài năm tới. Hơn nữa, các ứng dụng ngày nay đều sử dụng nhiều micro-service để duy trì kết nối cơ sở dữ liệu, message queue và duy trì cache. Vì vậy, các phần mềm mà chúng ta thiết kế và các ngôn ngữ lập trình nên hỗ trợ concurrency dễ dàng hơn và chúng có thể được mở rộng bằng cách tăng số lượng core.
