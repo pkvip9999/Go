@@ -7,7 +7,7 @@
 
 Trong vài năm qua,1 ngôn ngữ lập trình mới đang nổi lên: Go hoặc GoLang. Không có gì làm cho developer trở nên điên rồ hơn một ngôn ngữ lập trình mới, đúng không? Vì vậy, tôi bắt đầu học Go trước 4 đến 5 tháng và ở đây tôi sẽ cho bạn biết lý do tại sao bạn cũng nên học ngôn ngữ mới này.
 
-Tôi sẽ không dạy bạn, cách bạn có thể viết “Hello World !!” trong bài viết này. Có rất nhiều bài báo online cho điều đó. Tôi sẽ giải thích giai đoạn hiện tại của phần mềm máy tính và tại sao chúng ta cần ngôn ngữ mới như Go? Bởi vì nếu không có vấn đề gì thì chúng ta không cần giải pháp, đúng không?
+Tôi sẽ không dạy bạn, cách bạn có thể viết “Hello World !!” trong bài viết này. Có rất nhiều bài báo online cho điều đó. Tôi sẽ giải thích giai đoạn hiện tại của phần cứng và phần mềm máy tính và tại sao chúng ta cần ngôn ngữ mới như Go? Bởi vì nếu không có vấn đề gì thì chúng ta không cần giải pháp, đúng không?
 ### **Giới hạn về phần cứng:**
 Bộ xử lý Pentium 4 đầu tiên với tốc độ xung nhịp 3.0GHz đã được Intel giới thiệu vào năm 2004. Hiện giờ, Mackbook Pro 2016 của tôi có tốc độ xung nhịp 2,9GHz. Vì vậy, gần một thập kỷ, không có quá nhiều lợi ích trong việc tăng sức mạnh xử lý . Bạn có thể thấy so sánh việc tăng sức mạnh xử lý với thời gian biểu đồ bên dưới
 
@@ -33,7 +33,7 @@ Nhưng hầu hết các ngôn ngữ lập trình hiện đại (như Java, Pytho
 
 Ví dụ, tạo 1 luồng mới trong Jave không thực sự hiệu quả về mặt bộ nhớ. Vì mỗi 1 luồng tiêu tốn khoảng 1MB kích thước bộ nhớ heap và thậm chí nếu bạn bắt đầu  chạy hàng nghìn luồng, sẽ gây áp lực rất lớn trên bộ nhớ heap và gây ra shut down vì tràn bộ nhớ. Cũng như là nếu bạn muốn giao tiếp giữa 2 hoặc nhiều luồng, điều này là rất khó khăn.
 
-Mặt khác, Go được released trong năm 2009 khi các bộ xử lý nhiều-core đã xuất heienj. Đó là lý do Go được xây dựng gắn liền với concurrency. Go có goroutines thay vì các luồng. Nó tiêu thụ khoảng 2KB bộ nhớ từ heap. Vì vậy, bạn có thể chạy hàng triệu goroutines cùng lúc.
+Mặt khác, Go được released trong năm 2009 khi các bộ xử lý nhiều-core đã xuất hiện. Đó là lý do Go được xây dựng gắn liền với concurrency. Go có goroutines thay vì các luồng. Nó tiêu thụ khoảng 2KB bộ nhớ từ heap. Vì vậy, bạn có thể chạy hàng triệu goroutines cùng lúc.
 ![][1]
 
  Goroutines hoạt động thế nào? Reffrance: 
@@ -42,12 +42,12 @@ Mặt khác, Go được released trong năm 2009 khi các bộ xử lý nhiều
 
 * Goroutines có segmented stacks có khả năng mở rộng. Điều này có nghĩa là chúng sẽ chỉ sử dụng thêm bộ nhớ khi cần thiết .
 * Goroutines có thời gian startup nhanh hơn threads.
-* Goroutines come with built-in primitives để giao tiếp an toàn giữa chúng (channels).
+* Goroutines xây dựng cùng với  primitives để giao tiếp an toàn giữa chúng (channels).
 * Goroutines cho phép tránh các phương pháp mutex locking khi chia sẽ các cấu trúc dữ liệu.
 * Ngoài ra, goroutines và OS threads không có 1:1 mapping. 1 goroutine đơn có thể chạy trên đa luồng. Goroutine được ghép vào 1 lượng nhỏ các luồng OS.
 
 
-> Bạn có thể xem Rob Pike's excellent talk [concurrency không phải là parallelism][2]  để hiểu sâu hơn về vấn đề này.
+> Bạn có thể xem Rob Pike's chia sẻ [concurrency không phải là parallelism][2]  để hiểu sâu hơn về vấn đề này.
 
 Tất cả các điểm trên khiến Go trở nên mạnh mẽ trong xử lý concurrency như Java, C và C++ trong khi vấn giữ được các tư tưởng và vẻ đẹp của code thực thi concurrency  như Erlang.
 
@@ -76,13 +76,13 @@ Các nhà thiết kế Go tại Google luôn tâm niệm điều này trong tâm
 Go chủ định loại bỏ nhiều tính năng của các ngôn ngữ OOP hiện đại.
 
 - Không lớp. Mọi thứ được chia thành các package thôi. Go chỉ có struct hay cho các classs
-- Không hỗ trợ  kế thừa. Điều này sẽ khiến code dễ chỉnh sửa. Trong các ngôn ngữ khác như Java/Python, néu class ABC kế thưuaf class XYZ và bạn có 1 vài thay đổi tỏng class XYZ, điều này có thể gây nên 1 vài ảnh hưởng với các lớp khác kế thừa XYZ. Bằng cách bỏ đi kế thừa, Go khiến việc hiểu code dễ hiểu hơn (vì không có super class để xem khi nhìn 1 phần code).
+- Không hỗ trợ  kế thừa. Điều này sẽ khiến code dễ chỉnh sửa. Trong các ngôn ngữ khác như Java/Python, néu class ABC kế thừa class XYZ và bạn có 1 vài thay đổi tỏng class XYZ, điều này có thể gây nên 1 vài ảnh hưởng với các lớp khác kế thừa XYZ. Bằng cách bỏ đi kế thừa, Go khiến việc hiểu code dễ hiểu hơn (vì không có super class để xem khi nhìn 1 phần code).
 - KHông constructoe
 - Không annotations
 - Không generics
 - KHông exception
 
-Những thay đổi trên khiến Go thực sự kh biệt với các ngôn ngữ khác và nó khiến việc lập trình bằng Go khác biệt với những ngôn ngữ khác. Bạn có thể không thích 1  vài thứ bên trên. Nhưng nó không giống việc bạn không thể code ứng dụng với những tính năng trên. Tất cả những gì bạn phải làm là viết thêm 2-3 dòng. Nhưng về mặt tichs cực, nó sẽ khiến code sáng sủa hơn và code thêm nuột
+Những thay đổi trên khiến Go thực sự khác biệt với các ngôn ngữ khác và nó khiến việc lập trình bằng Go khác biệt với những ngôn ngữ khác. Bạn có thể không thích 1  vài thứ bên trên. Nhưng nó không giống việc bạn không thể code ứng dụng với những tính năng trên. Tất cả những gì bạn phải làm là viết thêm 2-3 dòng. Nhưng về mặt tích cực, nó sẽ khiến code sáng sủa hơn và code thêm nuột
 
 Biểu đồ trên hiển thị Go hiệu quả tương đương với C/C++, trong khi cú pháp code đơn giản như Ruby Python và các ngôn ngữ khác. Điều lại thuận lợi cho cả con người và các trình xử lý.
 
